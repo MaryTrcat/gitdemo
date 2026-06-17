@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录界面方案选择</title>
+  <style>
+    :root {
+      --ink: #17211d;
+      --muted: #69756f;
+      --green: #1e7c63;
+      --green-dark: #155f4c;
+      --line: #d6ded8;
+      --paper: #fffdf7;
+      --mist: #eef5ef;
+      --blue: #275d88;
+      --clay: #a9573f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      background:
+        linear-gradient(135deg, rgba(30, 124, 99, 0.10), transparent 32%),
+        linear-gradient(315deg, rgba(39, 93, 136, 0.12), transparent 34%),
+        #f5f6f1;
+    }
+
+    .page {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 4vw, 46px);
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: rgba(255, 253, 247, 0.72);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--green-dark);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .option {
+      background: rgba(255, 253, 247, 0.84);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 18px 48px rgba(23, 33, 29, 0.08);
+    }
+
+    .preview {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(23, 33, 29, 0.08);
+    }
+
+    .login {
+      width: min(86%, 360px);
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .field {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    label {
+      text-align: right;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      height: 44px;
+      border-radius: 7px;
+      border: 1px solid #cbd8d0;
+      padding: 0 13px;
+      font-size: 15px;
+      background: #fff;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button {
+      height: 46px;
+      border-radius: 7px;
+      border: 1px solid #bad7ca;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    button.primary {
+      border-color: var(--green);
+      background: var(--green);
+      color: white;
+    }
+
+    .option h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .option p {
+      font-size: 14px;
+    }
+
+    .clean {
+      background:
+        linear-gradient(180deg, #fbfdf9, #edf5ef);
+    }
+
+    .clean .login {
+      background: #fffdf7;
+      border: 1px solid #d6ded8;
+    }
+
+    .academy {
+      background:
+        linear-gradient(90deg, rgba(21, 95, 76, 0.10), transparent),
+        repeating-linear-gradient(0deg, rgba(23, 33, 29, 0.05), rgba(23, 33, 29, 0.05) 1px, transparent 1px, transparent 20px),
+        #eef4ef;
+    }
+
+    .academy .login {
+      background: rgba(255, 255, 255, 0.92);
+      border-left: 5px solid var(--green);
+    }
+
+    .editorial {
+      background:
+        linear-gradient(135deg, rgba(169, 87, 63, 0.20), transparent 42%),
+        linear-gradient(315deg, rgba(39, 93, 136, 0.16), transparent 44%),
+        #f8f2eb;
+    }
+
+    .editorial .login {
+      background: #fffaf2;
+      border: 1px solid rgba(169, 87, 63, 0.22);
+      box-shadow: 12px 12px 0 rgba(39, 93, 136, 0.12);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        display: block;
+      }
+
+      .tag {
+        display: inline-block;
+        margin-top: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div>
+        <h1>登录界面方案选择</h1>
+        <p>下面三套方案都已经把标题去掉，并缩短了标签和输入框之间的距离。当前 Qt 版本先按方案一落地。</p>
+      </div>
+      <div class="tag">手语动作学习系统 UI</div>
+    </header>
+
+    <section class="grid">
+      <article class="option">
+        <div class="preview clean">
+          <div class="login">
+            <div class="field"><label>用户名</label><input placeholder="请输入用户名"></div>
+            <div class="field"><label>密码</label><input placeholder="请输入密码" type="password"></div>
+            <div class="actions"><button>注册</button><button class="primary">登录进入系统</button></div>
+          </div>
+        </div>
+        <h2>方案一：简洁教学风</h2>
+        <p>更接近当前软件，变化稳妥，适合毕业设计答辩演示。</p>
+      </article>
+
+      <article class="option">
+        <div class="preview academy">
+          <div class="login">
+            <div class="field"><label>用户名</label><input placeholder="请输入用户名"></div>
+            <div class="field"><label>密码</label><input placeholder="请输入密码" type="password"></div>
+            <div class="actions"><button>注册</button><button class="primary">登录进入系统</button></div>
+          </div>
+        </div>
+        <h2>方案二：网格专业风</h2>
+        <p>更像学习平台和数据系统，视觉更现代，适合后续扩展主界面。</p>
+      </article>
+
+      <article class="option">
+        <div class="preview editorial">
+          <div class="login">
+            <div class="field"><label>用户名</label><input placeholder="请输入用户名"></div>
+            <div class="field"><label>密码</label><input placeholder="请输入密码" type="password"></div>
+            <div class="actions"><button>注册</button><button class="primary">登录进入系统</button></div>
+          </div>
+        </div>
+        <h2>方案三：答辩展示风</h2>
+        <p>更有展示感和记忆点，适合做截图、论文系统效果展示页。</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

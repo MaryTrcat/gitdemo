@@ -1,0 +1,31 @@
+{
+  "configurations": [
+    {
+      "name": "Qt MinGW",
+      "compilerPath": "E:/QT/Tools/mingw1310_64/bin/g++.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++14",
+      "intelliSenseMode": "windows-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/build/SignLanguageLearningSystem_autogen/include",
+        "E:/QT/6.11.0/mingw_64/include",
+        "E:/QT/6.11.0/mingw_64/include/QtCore",
+        "E:/QT/6.11.0/mingw_64/include/QtGui",
+        "E:/QT/6.11.0/mingw_64/include/QtWidgets",
+        "E:/QT/6.11.0/mingw_64/include/QtSql",
+        "E:/QT/6.11.0/mingw_64/include/QtMultimedia",
+        "E:/QT/6.11.0/mingw_64/include/QtMultimediaWidgets"
+      ],
+      "defines": [
+        "QT_CORE_LIB",
+        "QT_GUI_LIB",
+        "QT_WIDGETS_LIB",
+        "QT_SQL_LIB",
+        "QT_MULTIMEDIA_LIB",
+        "QT_MULTIMEDIAWIDGETS_LIB"
+      ]
+    }
+  ],
+  "version": 4
+}

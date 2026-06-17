@@ -1,0 +1,11 @@
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/SignLanguageLearningSystem.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/GestureScorerTests.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/UserManagerTests.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/SignLanguageLearningSystem_autogen_timestamp_deps.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/SignLanguageLearningSystem_autogen.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/GestureScorerTests_autogen_timestamp_deps.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/GestureScorerTests_autogen.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/UserManagerTests_autogen_timestamp_deps.dir
+E:/毕业设计/sign-language-learning-system/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/UserManagerTests_autogen.dir

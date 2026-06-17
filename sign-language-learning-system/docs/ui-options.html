@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>手语动作学习系统 UI 方案册</title>
+  <style>
+    :root {
+      --ink: #1d2422;
+      --soft-ink: #59635f;
+      --paper: #f4f5f1;
+      --card: #ffffff;
+      --line: #d9ded6;
+      --green: #1e7c63;
+      --blue: #2f6f91;
+      --red: #b94d43;
+      --yellow: #c18a2d;
+      --shadow: 0 18px 50px rgba(26, 36, 33, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+      background: #f4f5f1;
+    }
+
+    header {
+      padding: 28px 36px 18px;
+      background: #f7f8f4;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 8px 0 0;
+      color: var(--soft-ink);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 36px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 7px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .wrap {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 24px;
+      padding: 24px 36px 40px;
+    }
+
+    .style-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position: sticky;
+      top: 88px;
+      align-self: start;
+    }
+
+    .style-card h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .style-card p {
+      color: var(--soft-ink);
+      line-height: 1.65;
+      font-size: 13px;
+      margin: 0 0 14px;
+    }
+
+    .tokens {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .token {
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .choose {
+      width: 100%;
+      border: 0;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .screens {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .screen-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .screen-title {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-weight: 800;
+    }
+
+    .screen-title span {
+      color: var(--soft-ink);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .screen {
+      height: 430px;
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .window {
+      height: 100%;
+      border: 1px solid rgba(0,0,0,.11);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--card);
+    }
+
+    .bar {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      font-size: 12px;
+      font-weight: 800;
+      border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .body {
+      height: calc(100% - 42px);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+    }
+
+    .side {
+      padding: 12px;
+      border-right: 1px solid rgba(0,0,0,.08);
+    }
+
+    .nav {
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding: 0 9px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .work {
+      padding: 14px;
+      min-width: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 12px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .panel {
+      border: 1px solid rgba(0,0,0,.09);
+      border-radius: 8px;
+      padding: 11px;
+      min-width: 0;
+    }
+
+    .label {
+      font-size: 12px;
+      color: var(--soft-ink);
+      margin-bottom: 7px;
+    }
+
+    .big {
+      font-size: 25px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .line {
+      height: 22px;
+      border-radius: 5px;
+      margin-top: 8px;
+    }
+
+    .thin { height: 11px; }
+
+    .video {
+      height: 160px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+
+    .video::before {
+      content: "";
+      position: absolute;
+      width: 78px;
+      height: 108px;
+      left: calc(50% - 39px);
+      top: 25px;
+      border: 3px solid currentColor;
+      border-radius: 48% 42% 46% 45%;
+      transform: rotate(-9deg);
+    }
+
+    .video::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 50px;
+      left: calc(50% + 44px);
+      top: 41px;
+      border: 3px solid currentColor;
+      border-radius: 16px;
+      transform: rotate(19deg);
+    }
+
+    .login-layout {
+      height: 100%;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+    }
+
+    .login-art {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .login-form {
+      padding: 44px 28px;
+    }
+
+    .input {
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.12);
+      margin: 9px 0;
+      background: rgba(255,255,255,.78);
+    }
+
+    .primary {
+      height: 38px;
+      border-radius: 6px;
+      margin-top: 12px;
+    }
+
+    .library {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tile {
+      height: 86px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,.09);
+      padding: 10px;
+    }
+
+    .chart {
+      height: 130px;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .result {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    /* Style 1: classroom */
+    .classroom {
+      --card: #fffef9;
+      --accent: #26745f;
+      --accent2: #c7882f;
+      --field: #edf5ef;
+      --navbg: #eef2ec;
+      --bar: #f4f0df;
+    }
+
+    .classroom .window { background: #fffef9; }
+    .classroom .bar { background: var(--bar); }
+    .classroom .side { background: #f7f6ed; }
+    .classroom .nav { background: var(--navbg); color: #5b635c; }
+    .classroom .nav.on { background: #dceee5; color: var(--accent); }
+    .classroom .panel, .classroom .tile { background: #fffefa; }
+    .classroom .line, .classroom .input { background: var(--field); }
+    .classroom .video { background: #e7f2ec; color: var(--accent); }
+    .classroom .primary { background: var(--accent); }
+    .classroom .login-art { background: #e9f1e9; }
+    .classroom .chart { background: #f5eddc; }
+
+    /* Style 2: lab */
+    .lab {
+      --card: #f8fbfb;
+      --accent: #2f6f91;
+      --accent2: #b84b42;
+      --field: #e9f0f2;
+      --navbg: #edf1f2;
+      --bar: #e7eef0;
+    }
+
+    .lab .bar { background: var(--bar); }
+    .lab .side { background: #f0f3f4; }
+    .lab .nav { border-left: 3px solid transparent; border-radius: 0; }
+    .lab .nav.on { border-left-color: var(--accent); background: #e2edf2; color: var(--accent); }
+    .lab .panel, .lab .tile { background: #fff; }
+    .lab .line, .lab .input { background: var(--field); }
+    .lab .video { background: #e2edf2; color: var(--accent); }
+    .lab .primary { background: var(--accent); }
+    .lab .login-art { background: #dfe9ed; }
+    .lab .chart { background: #edf3f5; }
+
+    /* Style 3: training room */
+    .warm {
+      --card: #fffaf3;
+      --accent: #9b5f2a;
+      --accent2: #2f7669;
+      --field: #f1e6d8;
+      --navbg: #f4eadc;
+      --bar: #efe0cc;
+    }
+
+    .warm .bar { background: var(--bar); }
+    .warm .side { background: #f8eee1; }
+    .warm .nav { background: var(--navbg); }
+    .warm .nav.on { background: #ead0b5; color: var(--accent); }
+    .warm .panel, .warm .tile { background: #fffaf3; }
+    .warm .line, .warm .input { background: var(--field); }
+    .warm .video { background: #efe2d2; color: var(--accent); }
+    .warm .primary { background: var(--accent); }
+    .warm .login-art { background: #f0dfca; }
+    .warm .chart { background: #f4eadc; }
+
+    /* Style 4: compact desktop */
+    .desktop {
+      --card: #fafafa;
+      --accent: #315d50;
+      --accent2: #9c3530;
+      --field: #e9ecea;
+      --navbg: #eef0ee;
+      --bar: #2b3331;
+    }
+
+    .desktop .window { background: #fafafa; }
+    .desktop .bar { background: var(--bar); color: #fff; }
+    .desktop .side { background: #e9ecea; }
+    .desktop .nav { background: transparent; }
+    .desktop .nav.on { background: #d7dfdb; color: var(--accent); }
+    .desktop .panel, .desktop .tile { background: #fff; }
+    .desktop .line, .desktop .input { background: var(--field); }
+    .desktop .video { background: #dde5e1; color: var(--accent); }
+    .desktop .primary { background: var(--accent); }
+    .desktop .login-art { background: #dfe5e2; }
+    .desktop .chart { background: #ecefed; }
+
+    .primary, .tile strong { display: block; }
+    .primary { color: #fff; }
+
+    @media (max-width: 1200px) {
+      .wrap { grid-template-columns: 1fr; }
+      .style-card { position: static; }
+      .screens { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>手语动作学习系统 UI 方案册</h1>
+    <p class="lead">这版不是单张概念图，而是按真实系统拆成 6 个界面：登录、首页、练习、手势库、学习统计、考核评测。每套都尽量贴近 Qt Widgets 能实现的形态，少一点模板味，多一点毕业设计软件的真实感。</p>
+  </header>
+
+  <nav class="toolbar">
+    <button class="active" data-style="classroom">方案 A：教学清爽</button>
+    <button data-style="lab">方案 B：视觉实验室</button>
+    <button data-style="warm">方案 C：无障碍训练室</button>
+    <button data-style="desktop">方案 D：紧凑工作台</button>
+  </nav>
+
+  <main class="wrap">
+    <aside class="style-card">
+      <h2 id="styleName">方案 A：教学清爽</h2>
+      <p id="styleDesc">偏学校课程软件，清楚、温和、答辩友好。适合你现在的 Qt Widgets 项目，改造成本最低。</p>
+      <div class="tokens" id="tokens">
+        <span class="token" style="background:#fffef9"></span>
+        <span class="token" style="background:#26745f"></span>
+        <span class="token" style="background:#c7882f"></span>
+        <span class="token" style="background:#e9f1e9"></span>
+      </div>
+      <button class="choose" id="choose">选择当前方案</button>
+      <div class="result" id="result">当前未选择。</div>
+    </aside>
+
+    <section class="screens" id="screens"></section>
+  </main>
+
+  <template id="login">
+    <article class="screen-card">
+      <div class="screen-title">登录界面 <span>用户管理模块入口</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="login-layout">
+            <div class="login-art">
+              <div>
+                <div class="big">手语动作学习</div>
+                <div class="line"></div>
+                <div class="line thin"></div>
+              </div>
+              <div class="video" style="height:150px"></div>
+            </div>
+            <div class="login-form">
+              <div class="big" style="font-size:22px">账号登录</div>
+              <div class="label" style="margin-top:18px">用户名</div>
+              <div class="input"></div>
+              <div class="label">密码</div>
+              <div class="input"></div>
+              <div class="primary"></div>
+              <div class="line thin"></div>
+              <div class="line thin" style="width:70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="home">
+    <article class="screen-card">
+      <div class="screen-title">首页总览 <span>八模块聚合入口</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="bar">手语学习首页 <span>当前用户：student</span></div>
+          <div class="body">
+            <aside class="side">
+              <div class="nav on">首页</div><div class="nav">练习</div><div class="nav">手势库</div><div class="nav">统计</div><div class="nav">考核</div>
+            </aside>
+            <section class="work">
+              <div class="grid-3">
+                <div class="panel"><div class="label">累计练习</div><div class="big">36</div></div>
+                <div class="panel"><div class="label">平均分</div><div class="big">84</div></div>
+                <div class="panel"><div class="label">待复习</div><div class="big">5</div></div>
+              </div>
+              <div class="grid-2" style="margin-top:12px">
+                <div class="panel"><div class="label">今日推荐</div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+                <div class="panel"><div class="label">快捷操作</div><div class="primary"></div><div class="line"></div></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="practice">
+    <article class="screen-card">
+      <div class="screen-title">动作练习 <span>摄像头、关键点、评分、反馈</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="bar">练习：你好 <span>摄像头已连接</span></div>
+          <div class="body">
+            <aside class="side">
+              <div class="nav on">实时练习</div><div class="nav">动作说明</div><div class="nav">纠错反馈</div>
+            </aside>
+            <section class="work">
+              <div class="grid-2">
+                <div class="panel">
+                  <div class="label">摄像头预览</div>
+                  <div class="video"></div>
+                </div>
+                <div class="panel">
+                  <div class="label">动作评分</div>
+                  <div class="big">88</div>
+                  <div class="line"></div><div class="line"></div><div class="line"></div>
+                </div>
+              </div>
+              <div class="panel" style="margin-top:12px"><div class="label">纠错建议</div><div class="line"></div><div class="line"></div></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="library">
+    <article class="screen-card">
+      <div class="screen-title">手势库 <span>分类、搜索、难度</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="bar">手势资源库 <span>常用词 / 数字 / 字母</span></div>
+          <div class="body">
+            <aside class="side">
+              <div class="nav on">常用词</div><div class="nav">数字</div><div class="nav">字母</div><div class="nav">收藏</div>
+            </aside>
+            <section class="work">
+              <div class="input" style="margin-top:0"></div>
+              <div class="library">
+                <div class="tile"><strong>你好</strong><div class="line thin"></div><div class="line thin"></div></div>
+                <div class="tile"><strong>谢谢</strong><div class="line thin"></div><div class="line thin"></div></div>
+                <div class="tile"><strong>学习</strong><div class="line thin"></div><div class="line thin"></div></div>
+                <div class="tile"><strong>我</strong><div class="line thin"></div><div class="line thin"></div></div>
+                <div class="tile"><strong>爱</strong><div class="line thin"></div><div class="line thin"></div></div>
+                <div class="tile"><strong>帮助</strong><div class="line thin"></div><div class="line thin"></div></div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="stats">
+    <article class="screen-card">
+      <div class="screen-title">学习统计 <span>练习记录与趋势</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="bar">学习数据统计 <span>最近 7 天</span></div>
+          <div class="body">
+            <aside class="side">
+              <div class="nav on">趋势</div><div class="nav">错题</div><div class="nav">报告</div>
+            </aside>
+            <section class="work">
+              <div class="grid-3">
+                <div class="panel"><div class="label">最高分</div><div class="big">96</div></div>
+                <div class="panel"><div class="label">进步</div><div class="big">+12</div></div>
+                <div class="panel"><div class="label">稳定度</div><div class="big">81</div></div>
+              </div>
+              <div class="panel" style="margin-top:12px">
+                <div class="label">得分趋势</div>
+                <div class="chart">
+                  <svg viewBox="0 0 400 130" preserveAspectRatio="none">
+                    <polyline points="0,100 60,84 120,94 180,62 240,58 300,43 400,35" fill="none" stroke="currentColor" stroke-width="6"/>
+                  </svg>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <template id="exam">
+    <article class="screen-card">
+      <div class="screen-title">考核评测 <span>随机抽测与错题复习</span></div>
+      <div class="screen">
+        <div class="window">
+          <div class="bar">阶段考核 <span>第 3 / 8 题</span></div>
+          <div class="body">
+            <aside class="side">
+              <div class="nav on">随机测试</div><div class="nav">错题本</div><div class="nav">成绩单</div>
+            </aside>
+            <section class="work">
+              <div class="grid-2">
+                <div class="panel"><div class="label">请完成手势：谢谢</div><div class="video"></div></div>
+                <div class="panel"><div class="label">倒计时</div><div class="big">08</div><div class="line"></div><div class="line"></div></div>
+              </div>
+              <div class="panel" style="margin-top:12px"><div class="label">考核规则</div><div class="line"></div><div class="line"></div></div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    const styleData = {
+      classroom: {
+        name: '方案 A：教学清爽',
+        desc: '偏学校课程软件，清楚、温和、答辩友好。适合你现在的 Qt Widgets 项目，改造成本最低。',
+        colors: ['#fffef9', '#26745f', '#c7882f', '#e9f1e9']
+      },
+      lab: {
+        name: '方案 B：视觉实验室',
+        desc: '更强调摄像头、关键点、评分这些技术模块，但不做夸张炫光。适合想突出计算机视觉方向。',
+        colors: ['#f8fbfb', '#2f6f91', '#b84b42', '#dfe9ed']
+      },
+      warm: {
+        name: '方案 C：无障碍训练室',
+        desc: '温暖、亲和、适合学习者长期使用。比普通管理系统更有人情味，但仍然能落地到 Qt。',
+        colors: ['#fffaf3', '#9b5f2a', '#2f7669', '#f0dfca']
+      },
+      desktop: {
+        name: '方案 D：紧凑工作台',
+        desc: '信息密度高，像成熟桌面软件。适合强调八模块、数据库、练习记录、考核闭环。',
+        colors: ['#fafafa', '#315d50', '#9c3530', '#dfe5e2']
+      }
+    };
+
+    const screens = ['login', 'home', 'practice', 'library', 'stats', 'exam'];
+    const screenHost = document.getElementById('screens');
+    const styleName = document.getElementById('styleName');
+    const styleDesc = document.getElementById('styleDesc');
+    const tokens = document.getElementById('tokens');
+    const result = document.getElementById('result');
+    let current = 'classroom';
+
+    function render(style) {
+      current = style;
+      const data = styleData[style];
+      styleName.textContent = data.name;
+      styleDesc.textContent = data.desc;
+      tokens.innerHTML = data.colors.map(color => `<span class="token" style="background:${color}"></span>`).join('');
+      screenHost.className = `screens ${style}`;
+      screenHost.innerHTML = '';
+      screens.forEach(id => {
+        screenHost.appendChild(document.getElementById(id).content.cloneNode(true));
+      });
+      document.querySelectorAll('.toolbar button').forEach(button => {
+        button.classList.toggle('active', button.dataset.style === style);
+      });
+    }
+
+    document.querySelectorAll('.toolbar button').forEach(button => {
+      button.addEventListener('click', () => render(button.dataset.style));
+    });
+
+    document.getElementById('choose').addEventListener('click', () => {
+      result.textContent = `已选择：${styleData[current].name}。把这个方案名发给我，我就按它改 Qt 界面。`;
+    });
+
+    render(current);
+  </script>
+</body>
+</html>

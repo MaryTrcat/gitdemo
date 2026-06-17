@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "运行手语学习系统",
+      "type": "cppdbg",
+      "request": "launch",
+      "noDebug": true,
+      "program": "${workspaceFolder}/sign-language-learning-system/build/SignLanguageLearningSystem.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/sign-language-learning-system",
+      "environment": [
+        {
+          "name": "PATH",
+          "value": "E:/QT/6.11.0/mingw_64/bin;E:/QT/Tools/mingw1310_64/bin;${env:PATH}"
+        }
+      ],
+      "externalConsole": false,
+      "internalConsoleOptions": "neverOpen",
+      "MIMode": "gdb",
+      "miDebuggerPath": "E:/QT/Tools/mingw1310_64/bin/gdb.exe",
+      "preLaunchTask": "build SignLanguageLearningSystem"
+    }
+  ]
+}

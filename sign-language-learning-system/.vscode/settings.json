@@ -1,0 +1,12 @@
+{
+  "cmake.configureOnOpen": true,
+  "cmake.buildDirectory": "${workspaceFolder}/build",
+  "cmake.generator": "Ninja",
+  "cmake.configureSettings": {
+    "CMAKE_PREFIX_PATH": "E:/QT/6.11.0/mingw_64",
+    "CMAKE_CXX_COMPILER": "E:/QT/Tools/mingw1310_64/bin/g++.exe",
+    "CMAKE_C_COMPILER": "E:/QT/Tools/mingw1310_64/bin/gcc.exe"
+  },
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.default.compilerPath": "E:/QT/Tools/mingw1310_64/bin/g++.exe"
+}
